@@ -22,27 +22,25 @@ for i in range(len(chars)):
     for j in ways[i]:
         char_num[chars[i]] += str(j)
     num_char[char_num[chars[i]]] = chars[i]
+for i in range(len(char_num)):
+    print(list(char_num)[i], "-", list(num_char)[i])
 
 # Шифрование
 encrypted = ""
 for i in s:
     encrypted += char_num[i]
-
 encrypted = encrypted.replace("0", "Д")
 encrypted = encrypted.replace("1", "С")
 encrypted = encrypted.replace("2", "П")
-
 print(encrypted)
 
 # Расшифровка
 encrypted = encrypted.replace("Д", "0")
 encrypted = encrypted.replace("С", "1")
 encrypted = encrypted.replace("П", "2")
-
 decrypted = ""
 l = 0
 r = 1
-
 while r <= len(encrypted):
     try:
         decrypted += num_char[encrypted[l:r]]
@@ -50,5 +48,4 @@ while r <= len(encrypted):
     except:
         pass
     r += 1
-
 print(decrypted)
